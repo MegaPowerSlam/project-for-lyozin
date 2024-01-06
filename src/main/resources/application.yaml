@@ -1,0 +1,52 @@
+db:
+  username: best_user
+  password: best_user
+#  pool:
+#    size: 12
+  driver: PostgresDriver
+  url: jdbc:postgresql://localhost:5432/postgres
+  hosts: localhost,127.0.0.1
+
+#  properties:
+#    fist: 1
+#    last: 2
+#    key: value
+#
+#  pools:
+#    - size: 10
+#      timeout: 20
+#    - size: 10
+#      timeout: 20
+#    - size: 10
+#      timeout: 20
+#
+#logging:
+#  level:
+#    root: INFO
+#    ru.catchme.spring.database.repository.pool: INFO
+#
+#  file:
+#    name: ru.catchme
+#    path: /
+
+spring:
+#  mvc:
+#    view:
+#      prefix: /WEB-INF/jsp/
+#      suffix: .jsp
+  datasource:
+    url: jdbc:postgresql://localhost:5432/Delivery_project
+    username: best_user
+    password: best_user
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    properties.hibernate:
+        show_sql: true
+        format_sql: true
+        hbm2ddl.auto: validate
+    open-in-view: false
+
+#app:
+#  image:
+#    bucket: E:\2STUDY\Projects\Java\spring-starter-catchme\images
