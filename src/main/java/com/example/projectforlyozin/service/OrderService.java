@@ -13,6 +13,7 @@ import com.example.projectforlyozin.mapper.OrderReadMapper;
 import com.example.projectforlyozin.repository.OrderRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -45,6 +46,7 @@ public class OrderService {
         orderRepository.delete(orderRepository.findById(id).get());
     }
 
+    @Transactional
     public OrderReadDto changeCountOfProduct(Integer orderId, ProductQuantityCreateEditDto dto) {
         Optional<Order> order = orderRepository.findById(orderId);
         return order.map(entity -> {

@@ -17,7 +17,7 @@ public class OrderController {
     private final DeliveryListService deliveryListService;
 
     @PutMapping("/{id}")
-    public ResponseEntity<OrderReadDto> changeCountOfProduct(@PathVariable Integer orderId,
+    public ResponseEntity<OrderReadDto> changeCountOfProduct(@PathVariable("id") Integer orderId,
                                                              @RequestBody ProductQuantityCreateEditDto dto){
 
         OrderReadDto orderReadDto = orderService.changeCountOfProduct(orderId, dto);
@@ -36,8 +36,8 @@ public class OrderController {
     }
 
     @PostMapping("/{id}")
-    public ResponseEntity<OrderReadDto> changeCountOfProduct(@RequestBody DeliveryListCreateEditDto dto,
-                                                             @PathVariable Integer orderId){
+    public ResponseEntity<OrderReadDto> addDeliveryList(@RequestBody DeliveryListCreateEditDto dto,
+                                                             @PathVariable("id") Integer orderId){
 
         OrderReadDto orderReadDto = orderService.addDeliveryList(orderId, dto);
 
