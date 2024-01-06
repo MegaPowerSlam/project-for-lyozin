@@ -5,9 +5,11 @@ import com.example.projectforlyozin.entity.Order;
 import com.example.projectforlyozin.entity.OrderProduct;
 import com.example.projectforlyozin.entity.Product;
 import com.example.projectforlyozin.repository.OrderProductRepository;
+import com.example.projectforlyozin.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,6 +18,7 @@ import java.util.Optional;
 public class OrderCreateEditMapper implements Mapper<OrderCreateEditDto, Order>{
 
     private final OrderProductRepository orderProductRepository;
+    private final ProductRepository productRepository;
 
     @Override
     public Order map(OrderCreateEditDto fromObject, Order toObject) {
@@ -32,20 +35,29 @@ public class OrderCreateEditMapper implements Mapper<OrderCreateEditDto, Order>{
 
     private void copy(OrderCreateEditDto object, Order toObject){
         toObject.setOrderId(object.getOrderId());
-        toObject.setDateGet(object.getDateGet());
-        toObject.setOrderProducts(getProducts(object.getOrderProductsIds(), toObject.getOrderProducts()));
+//        toObject.setDateGet(object.getDateGet());
+        List<Product> products = getProducts(object.getProductsIds());
+        for (products) {
+            OrderProduct op = new OrderProduct();
+            op.setProduct(products[0]);
+            op.setOrder(order);
+            order.getOrderProducts().add(op);
+        }
+
+        repository.save(order);
+
     }
 
-    private List<OrderProduct> getProducts(List<Integer> orderProductsIds, List<OrderProduct> orderProducts){
-        for(int i = 0; i < orderProductsIds.size(); i++){
-            Integer id = orderProductsIds.get(i);
-            orderProducts.remove(i);
-            OrderProduct orderProduct = Optional.ofNullable(id)
-                    .flatMap(orderProductRepository::findById)
+    private List<Product> getProducts(List<Integer> productsIds){
+        List<Product> products = new ArrayList<>();
+        for(int i = 0; i < productsIds.size(); i++){
+            Integer id = productsIds.get(i);
+            Product product = Optional.ofNullable(id)
+                    .flatMap(productRepository::findById)
                     .orElse(null);
-            orderProducts.add(i, orderProduct);
+            products.add(product);
         }
-        return orderProducts;
+        return products;
     }
 
 }

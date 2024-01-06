@@ -12,5 +12,5 @@ public class OrderCreateEditDto {
 
     LocalDate dateGet;
 
-    List<Integer> orderProductsIds;
+    List<Integer> productsIds;
 }

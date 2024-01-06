@@ -36,7 +36,11 @@ public class CustomerCreateEditMapper implements Mapper<CustomerCreateEditDto, C
         toObject.setStreet(fromObject.getStreet());
         toObject.setHouse(fromObject.getHouse());
         toObject.setApartment(fromObject.getApartment());
-        toObject.setOrders(getOrders(fromObject.getOrderIds(), toObject.getOrders()));
+        if (fromObject.getOrderIds() == null){
+
+        } else {
+            toObject.setOrders(getOrders(fromObject.getOrderIds(), toObject.getOrders()));
+        }
     }
 
     private List<Order> getOrders(List<Integer> orderIds, List<Order> orders){
