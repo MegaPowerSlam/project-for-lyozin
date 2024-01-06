@@ -19,7 +19,6 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        System.out.println("ПРИВЕТ НИКИТА");
         http.authorizeRequests(authorizeRequests -> authorizeRequests.anyRequest()
                         .permitAll())
                 .csrf(csrf -> csrf.disable());
