@@ -12,6 +12,9 @@ import com.example.projectforlyozin.repository.ProductRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 @AllArgsConstructor
 public class ProductService {
@@ -37,4 +40,12 @@ public class ProductService {
         productRepository.delete(productRepository.findById(id).get());
     }
 
+    public List<ProductReadDto> getAll() {
+        return productRepository.findAll()
+                .stream()
+                .map(entity ->
+                    productReadMapper.map(entity)
+                )
+                .collect(Collectors.toList());
+    }
 }

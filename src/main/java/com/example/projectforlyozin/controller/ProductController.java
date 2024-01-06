@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RequestMapping("/product")
 @RestController
 @AllArgsConstructor
@@ -20,19 +22,24 @@ public class ProductController {
         return new ResponseEntity<>(productService.create(dto), HttpStatus.CREATED);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<ProductReadDto> read(@PathVariable Integer id){
-        return new ResponseEntity<>(productService.read(id), HttpStatus.OK);
-    }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<ProductReadDto> update(@RequestBody ProductCreateEditDto dto, @PathVariable Integer id){
-        return new ResponseEntity<>(productService.update(dto, id), HttpStatus.ACCEPTED);
+    @GetMapping
+    public ResponseEntity<List<ProductReadDto>> getAll(){
+        List<ProductReadDto> list = productService.getAll();
+        return ResponseEntity
+                .ok()
+                .body(list);
     }
 
     @DeleteMapping("/{id}")
-    public HttpStatus delete(@PathVariable Integer id){
+    public ResponseEntity<ProductReadDto> delete(@PathVariable Integer id){
         productService.delete(id);
-        return HttpStatus.I_AM_A_TEAPOT;
+        return ResponseEntity
+                .ok()
+                .build();
     }
+
+//    @PutMapping("/{id}")
+//    public ResponseEntity<ProductReadDto> update(@RequestBody ProductCreateEditDto dto, @PathVariable Integer id){
+//        return new ResponseEntity<>(productService.update(dto, id), HttpStatus.ACCEPTED);
+//    }
 }
