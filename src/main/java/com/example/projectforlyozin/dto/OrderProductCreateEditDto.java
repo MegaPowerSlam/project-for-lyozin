@@ -13,21 +13,21 @@ public class OrderProductCreateEditDto {
 }
 
 
-1) Чел с фронта кидает нам {
-        Integer quantity;
-        Integer productId;
-        Integer orderId;
-        }
-
-2) Мы тут на бекенде создаем
-        OrderProduct op = new OrderProduct();
-
-        getProduct(productId);
-        Order order = getOrder(orderId);
-
-        op.setProduct();
-        op.setOrder();
-
-        order.setOrderProduct(op);
-        repository.save(order);
-
+//1) Чел с фронта кидает нам {
+//        Integer quantity;
+//        Integer productId;
+//        Integer orderId;
+//        }
+//
+//2) Мы тут на бекенде создаем
+//        OrderProduct op = new OrderProduct();
+//
+//        getProduct(productId);
+//        Order order = getOrder(orderId);
+//
+//        op.setProduct();
+//        op.setOrder();
+//
+//        order.setOrderProduct(op);
+//        repository.save(order);
+//

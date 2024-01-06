@@ -36,16 +36,15 @@ public class OrderCreateEditMapper implements Mapper<OrderCreateEditDto, Order>{
     private void copy(OrderCreateEditDto object, Order toObject){
         toObject.setOrderId(object.getOrderId());
 //        toObject.setDateGet(object.getDateGet());
-        List<Product> products = getProducts(object.getProductsIds());
-        for (products) {
-            OrderProduct op = new OrderProduct();
-            op.setProduct(products[0]);
-            op.setOrder(order);
-            order.getOrderProducts().add(op);
-        }
-
-        repository.save(order);
-
+//        List<Product> products = getProducts(object.getProductIds());
+//        for (products) {
+//            OrderProduct op = new OrderProduct();
+//            op.setProduct(products[0]);
+//            op.setOrder(order);
+//            order.getOrderProducts().add(op);
+//        }
+//
+//        repository.save(order);
     }
 
     private List<Product> getProducts(List<Integer> productsIds){

@@ -3,6 +3,7 @@ package com.example.projectforlyozin.service;
 import com.example.projectforlyozin.dto.CustomerCreateEditDto;
 import com.example.projectforlyozin.dto.CustomerReadDto;
 import com.example.projectforlyozin.entity.Customer;
+import com.example.projectforlyozin.entity.Order;
 import com.example.projectforlyozin.mapper.CustomerCreateEditMapper;
 import com.example.projectforlyozin.mapper.CustomerReadMapper;
 import com.example.projectforlyozin.repository.CustomerRepository;
@@ -18,7 +19,10 @@ public class CustomerService {
     private final CustomerCreateEditMapper customerCreateEditMapper;
 
     public CustomerReadDto create(CustomerCreateEditDto dto){
-        return customerReadMapper.map(customerRepository.save(customerCreateEditMapper.map(dto)));
+        Customer customer = customerRepository.save(customerCreateEditMapper.map(dto));
+        //Добавляем новый ПУСТОЙ заказ ВО ВРЕМЯ РЕГИСТРАЦИИ пользователия
+        customer.getOrders().add(new Order());
+        return customerReadMapper.map(customer);
     }
 
     public CustomerReadDto read(Integer id){

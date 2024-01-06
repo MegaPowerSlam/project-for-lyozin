@@ -32,14 +32,14 @@ public class OrderService {
         return orderReadMapper.map(orderRepository.save(orderCreateEditMapper.map(dto)));
     }
 
-    public OrderReadDto read(Integer id){
-        return orderReadMapper.map(orderRepository.findById(id).get());
-    }
-
-    public OrderReadDto update(OrderCreateEditDto dto, Integer id){
-        Order order = orderRepository.findById(id).get();
-        return orderReadMapper.map(orderCreateEditMapper.map(dto, order));
-    }
+//    public OrderReadDto read(Integer id){
+//        return orderReadMapper.map(orderRepository.findById(id).get());
+//    }
+//
+//    public OrderReadDto update(OrderCreateEditDto dto, Integer id){
+//        Order order = orderRepository.findById(id).get();
+//        return orderReadMapper.map(orderCreateEditMapper.map(dto, order));
+//    }
 
     public void delete(Integer id){
         orderRepository.delete(orderRepository.findById(id).get());
