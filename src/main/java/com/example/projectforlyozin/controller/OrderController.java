@@ -17,16 +17,16 @@ public class OrderController {
     private final OrderService orderService;
     private final DeliveryListService deliveryListService;
 
-//    @PostMapping("/{id}")
-//    public ResponseEntity<OrderReadDto> addProductInOrder(@PathVariable("id") Integer orderId,
-//                                                          @RequestBody ProductCreateEditDto dto){
-//
-//        OrderReadDto orderReadDto = orderService.addProductInOrder(orderId, dto);
-//
-//        return ResponseEntity
-//                .ok()
-//                .body(orderReadDto);
-//    }
+    @PostMapping("/{id}")
+    public ResponseEntity<OrderReadDto> addProductInOrder(@PathVariable("id") Integer orderId,
+                                                          @RequestBody ProductQuantityCreateEditDto dto){
+
+        OrderReadDto orderReadDto = orderService.addProductInOrder(orderId, dto);
+
+        return ResponseEntity
+                .ok()
+                .body(orderReadDto);
+    }
 
     @PutMapping("/{id}")
     public ResponseEntity<OrderReadDto> changeCountOfProduct(@PathVariable("id") Integer orderId,
@@ -40,14 +40,15 @@ public class OrderController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> delete(@PathVariable Integer id){
-        orderService.delete(id);
+    public ResponseEntity<?> deleteProductFromOrder(@PathVariable("id") Integer orderId,
+                                                    @RequestBody Integer productId){
+        orderService.deleteProductFromOrder(orderId, productId);
         return ResponseEntity
                 .ok()
                 .build();
     }
 
-    @PostMapping("/{id}")
+    @PostMapping("/{id}/form-order")
     public ResponseEntity<OrderReadDto> addDeliveryList(@RequestBody DeliveryListCreateEditDto dto,
                                                              @PathVariable("id") Integer orderId){
 

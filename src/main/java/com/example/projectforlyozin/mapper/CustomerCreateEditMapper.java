@@ -3,6 +3,7 @@ package com.example.projectforlyozin.mapper;
 import com.example.projectforlyozin.dto.CustomerCreateEditDto;
 import com.example.projectforlyozin.entity.Customer;
 import com.example.projectforlyozin.entity.Order;
+import com.example.projectforlyozin.entity.Role;
 import com.example.projectforlyozin.repository.CustomerRepository;
 import com.example.projectforlyozin.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
@@ -36,6 +37,9 @@ public class CustomerCreateEditMapper implements Mapper<CustomerCreateEditDto, C
         toObject.setStreet(fromObject.getStreet());
         toObject.setHouse(fromObject.getHouse());
         toObject.setApartment(fromObject.getApartment());
+        toObject.setUsername(fromObject.getUsername());
+        toObject.setPassword(fromObject.getPassword());
+        toObject.setRole(Role.valueOf(fromObject.getRole()));
         if (fromObject.getOrderIds() == null){
 
         } else {

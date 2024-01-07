@@ -29,6 +29,9 @@ public class CustomerReadMapper implements Mapper<Customer, CustomerReadDto>{
                 object.getStreet(),
                 object.getHouse(),
                 object.getApartment(),
+                object.getUsername(),
+                object.getPassword(),
+                object.getRole(),
                 orders);
     }
 }

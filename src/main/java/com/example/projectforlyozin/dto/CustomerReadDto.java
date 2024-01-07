@@ -1,5 +1,6 @@
 package com.example.projectforlyozin.dto;
 
+import com.example.projectforlyozin.entity.Role;
 import lombok.Value;
 import java.util.List;
 
@@ -21,6 +22,12 @@ public class CustomerReadDto {
     Integer house;
 
     Integer apartment;
+
+    String username;
+
+    String password;
+
+    Role role;
 
     List<OrderReadDto> orders;
 }
