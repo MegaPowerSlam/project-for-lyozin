@@ -28,7 +28,5 @@ public class CustomerCreateEditDto {
 
     String password;
 
-    String role;
-
     List<Integer> orderIds;
 }

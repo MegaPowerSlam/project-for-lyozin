@@ -6,6 +6,7 @@ import com.example.projectforlyozin.service.ProductService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,6 +18,7 @@ public class ProductController {
 
     private final ProductService productService;
 
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping
     public ResponseEntity<ProductReadDto> create(@RequestBody ProductCreateEditDto dto){
         return new ResponseEntity<>(productService.create(dto), HttpStatus.CREATED);
@@ -30,6 +32,7 @@ public class ProductController {
                 .body(list);
     }
 
+    @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/{id}")
     public ResponseEntity<ProductReadDto> delete(@PathVariable Integer id){
         productService.delete(id);

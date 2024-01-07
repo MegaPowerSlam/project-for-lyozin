@@ -15,13 +15,13 @@ public class CustomerController {
 
     private final CustomerService customerService;
 
-    @PostMapping
-    public ResponseEntity<CustomerReadDto> create(@RequestBody CustomerCreateEditDto dto){
-        CustomerReadDto customerReadDto = customerService.create(dto);
-        return ResponseEntity
-                .status(HttpStatus.CREATED)
-                .build();
-    }
+//    @PostMapping
+//    public ResponseEntity<CustomerReadDto> create(@RequestBody CustomerCreateEditDto dto){
+//        CustomerReadDto customerReadDto = customerService.create(dto);
+//        return ResponseEntity
+//                .status(HttpStatus.CREATED)
+//                .build();
+//    }
 
 //    @GetMapping("/{id}")
 //    public ResponseEntity<CustomerReadDto> read(@PathVariable Integer id){

@@ -24,10 +24,7 @@ public class WebSecurityConfig {
     private final JwtAuthenticationFilter jwtAuthFilter;
     private final AuthenticationProvider authenticationProvider;
     private static final String[] WHITE_LIST_URL = {
-            "/api/auth/**",
-            "/api/**",
-            "/api/anime/**",
-            "/upload/**",
+            "/products",
 //            "/orders/**",
 //            "/customer/**",
 //            "/products/**",

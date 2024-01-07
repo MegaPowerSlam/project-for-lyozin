@@ -39,7 +39,7 @@ public class CustomerCreateEditMapper implements Mapper<CustomerCreateEditDto, C
         toObject.setApartment(fromObject.getApartment());
         toObject.setUsername(fromObject.getUsername());
         toObject.setPassword(fromObject.getPassword());
-        toObject.setRole(Role.valueOf(fromObject.getRole()));
+        toObject.setRole(Role.USER);
         if (fromObject.getOrderIds() == null){
 
         } else {
