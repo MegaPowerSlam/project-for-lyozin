@@ -20,15 +20,18 @@ public class AuthService {
     private final AuthenticationManager authenticationManager;
 
     public String authenticate(LoginDto dto) {
+        System.out.println("Try entry");
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         dto.getUsername(),
                         dto.getPassword()
                 )
         );
+        System.out.println("half entry");
 
         UserDetails user = userDetailsService.loadUserByUsername(dto.getUsername());
         String jwtToken = jwtService.generateToken(user);
+        System.out.println("Entry");
         return jwtToken;
     }
 }

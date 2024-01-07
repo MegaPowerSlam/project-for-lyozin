@@ -9,6 +9,7 @@ import com.example.projectforlyozin.mapper.CustomerReadMapper;
 import com.example.projectforlyozin.repository.CustomerRepository;
 import com.example.projectforlyozin.repository.OrderRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,10 +24,12 @@ public class CustomerService {
     private final OrderRepository orderRepository;
     private final CustomerReadMapper customerReadMapper;
     private final CustomerCreateEditMapper customerCreateEditMapper;
+    private final PasswordEncoder passwordEncoder;
 
     @Transactional
     public CustomerReadDto create(CustomerCreateEditDto dto){
         Customer customer = customerRepository.save(customerCreateEditMapper.map(dto));
+        customer.setPassword(passwordEncoder.encode(dto.getPassword()));
         Order order = new Order();
         order.setCustomer(customer);
         customer.getOrders().add(order);

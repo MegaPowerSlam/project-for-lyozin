@@ -22,7 +22,7 @@ public class AuthController {
 
     private final AuthService authService;
     private final CustomerService customerService;
-    @PostMapping("/registation")
+    @PostMapping("/registration")
     public ResponseEntity<?> registration(@RequestBody CustomerCreateEditDto dto) {
         CustomerReadDto customerReadDto = customerService.create(dto);
         return ResponseEntity
