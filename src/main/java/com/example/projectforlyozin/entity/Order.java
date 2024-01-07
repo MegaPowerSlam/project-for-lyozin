@@ -30,6 +30,7 @@ public class Order {
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
+
     @OneToOne(mappedBy = "order")
     private DeliveryList deliveryList;
 

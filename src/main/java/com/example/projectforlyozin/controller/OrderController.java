@@ -1,6 +1,7 @@
 package com.example.projectforlyozin.controller;
 
 import com.example.projectforlyozin.dto.*;
+import com.example.projectforlyozin.entity.Product;
 import com.example.projectforlyozin.service.DeliveryListService;
 import com.example.projectforlyozin.service.OrderService;
 import lombok.AllArgsConstructor;
@@ -15,6 +16,17 @@ public class OrderController {
 
     private final OrderService orderService;
     private final DeliveryListService deliveryListService;
+
+//    @PostMapping("/{id}")
+//    public ResponseEntity<OrderReadDto> addProductInOrder(@PathVariable("id") Integer orderId,
+//                                                          @RequestBody ProductCreateEditDto dto){
+//
+//        OrderReadDto orderReadDto = orderService.addProductInOrder(orderId, dto);
+//
+//        return ResponseEntity
+//                .ok()
+//                .body(orderReadDto);
+//    }
 
     @PutMapping("/{id}")
     public ResponseEntity<OrderReadDto> changeCountOfProduct(@PathVariable("id") Integer orderId,
