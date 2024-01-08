@@ -11,5 +11,8 @@ public class OrderReadDto {
 
     LocalDate dateGet;
 
+    DeliveryListReadDto deliveryListReadDto;
+
     List<ProductQuantity> products;
+
 }

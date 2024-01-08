@@ -10,15 +10,12 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class DeliveryListReadMapper implements Mapper<DeliveryList, DeliveryListReadDto>{
 
-    private final OrderReadMapper orderReadMapper;
-
     @Override
     public DeliveryListReadDto map(DeliveryList object) {
-        OrderReadDto orderReadDto = orderReadMapper.map(object.getOrder());
+
         return new DeliveryListReadDto(
                 object.getDeliveryId(),
                 object.getDateArrived(),
-                object.getPaymentMethod(),
-                orderReadDto);
+                object.getPaymentMethod());
     }
 }

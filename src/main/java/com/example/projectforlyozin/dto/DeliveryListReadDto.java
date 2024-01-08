@@ -11,6 +11,4 @@ public class DeliveryListReadDto {
     LocalDate dateArrived;
 
     String paymentMethod;
-
-    OrderReadDto order;
 }

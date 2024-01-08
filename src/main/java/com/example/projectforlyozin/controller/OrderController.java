@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RequestMapping("/orders")
 @RestController
 @AllArgsConstructor
@@ -58,6 +60,16 @@ public class OrderController {
                 .ok()
                 .body(orderReadDto);
     }
+
+//    @GetMapping ("/{id}/customer")
+//    public ResponseEntity<List<OrderReadDto>> getAllOrders(@PathVariable("id") Integer customerId){
+//
+//
+//        List<OrderReadDto> list = customerService.getAllOrders(customerId);
+//        return ResponseEntity
+//                .ok()
+//                .body(list);
+//    }
 
 //    @PostMapping
 //    public ResponseEntity<OrderReadDto> create(@RequestBody OrderCreateEditDto dto){

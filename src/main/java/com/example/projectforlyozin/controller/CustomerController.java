@@ -2,11 +2,16 @@ package com.example.projectforlyozin.controller;
 
 import com.example.projectforlyozin.dto.CustomerCreateEditDto;
 import com.example.projectforlyozin.dto.CustomerReadDto;
+import com.example.projectforlyozin.dto.OrderReadDto;
+import com.example.projectforlyozin.dto.ProductReadDto;
+import com.example.projectforlyozin.repository.CustomerRepository;
 import com.example.projectforlyozin.service.CustomerService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RequestMapping("/customer")
 @RestController
@@ -23,6 +28,14 @@ public class CustomerController {
 //                .build();
 //    }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<List<OrderReadDto>> getAllOrders(@PathVariable("id") Integer customerId){
+
+        List<OrderReadDto> list = customerService.getAllOrders(customerId);
+        return ResponseEntity
+                .ok()
+                .body(list);
+    }
 //    @GetMapping("/{id}")
 //    public ResponseEntity<CustomerReadDto> read(@PathVariable Integer id){
 //        return new ResponseEntity<>(customerService.read(id), HttpStatus.OK);
