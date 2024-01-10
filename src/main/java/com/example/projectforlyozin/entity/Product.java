@@ -27,6 +27,9 @@ public class Product {
     @Column(name = "price")
     private BigDecimal price;
 
+    @Column(name = "description")
+    private String description;
+
     @OneToMany(mappedBy = "product")
     private List<OrderProduct> orderProducts;
 }

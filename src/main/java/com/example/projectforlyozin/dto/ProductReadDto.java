@@ -3,7 +3,6 @@ package com.example.projectforlyozin.dto;
 import lombok.Value;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 @Value
 public class ProductReadDto {
@@ -13,4 +12,6 @@ public class ProductReadDto {
     String productName;
 
     BigDecimal price;
+
+    String description;
 }

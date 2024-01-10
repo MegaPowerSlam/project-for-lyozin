@@ -26,5 +26,6 @@ public class ProductCreateEditMapper implements Mapper<ProductCreateEditDto, Pro
         toObject.setProductId(object.getProductId());
         toObject.setProductName(object.getProductName());
         toObject.setPrice(object.getPrice());
+        toObject.setDescription(object.getDescription());
     }
 }

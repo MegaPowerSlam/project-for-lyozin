@@ -4,6 +4,7 @@ package com.example.projectforlyozin.controller;
 import com.example.projectforlyozin.dto.CustomerCreateEditDto;
 import com.example.projectforlyozin.dto.CustomerReadDto;
 import com.example.projectforlyozin.dto.LoginDto;
+import com.example.projectforlyozin.dto.LoginInfo;
 import com.example.projectforlyozin.service.AuthService;
 import com.example.projectforlyozin.service.CustomerService;
 import lombok.RequiredArgsConstructor;
@@ -14,8 +15,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 @RequestMapping("/auth")
 @RequiredArgsConstructor
 public class AuthController {
@@ -24,6 +26,7 @@ public class AuthController {
     private final CustomerService customerService;
     @PostMapping("/registration")
     public ResponseEntity<?> registration(@RequestBody CustomerCreateEditDto dto) {
+        System.out.println(dto.toString());
         CustomerReadDto customerReadDto = customerService.create(dto);
         return ResponseEntity
                 .status(HttpStatus.CREATED)
@@ -32,9 +35,9 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginDto dto) {
-        String token = authService.authenticate(dto);
+        LoginInfo loginInfo = authService.authenticate(dto);
         return ResponseEntity
                 .ok()
-                .body(token);
+                .body(loginInfo);
     }
 }

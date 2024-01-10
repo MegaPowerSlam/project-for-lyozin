@@ -12,4 +12,6 @@ public class ProductCreateEditDto {
     String productName;
 
     BigDecimal price;
+
+    String description;
 }

@@ -13,6 +13,7 @@ public class ProductReadMapper implements Mapper<Product, ProductReadDto> {
         return new ProductReadDto(
                 object.getProductId(),
                 object.getProductName(),
-                object.getPrice());
+                object.getPrice(),
+                object.getDescription());
     }
 }
