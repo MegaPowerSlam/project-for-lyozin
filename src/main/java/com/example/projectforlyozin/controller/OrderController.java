@@ -21,7 +21,7 @@ public class OrderController {
 
     @PostMapping("/{id}")
     public ResponseEntity<OrderReadDto> addProductInOrder(@PathVariable("id") Integer orderId,
-                                                          @RequestBody ProductQuantityCreateEditDto dto){
+                                                          @RequestBody ProductQuantityCreateEditDto dto) throws Exception {
 
         OrderReadDto orderReadDto = orderService.addProductInOrder(orderId, dto);
 

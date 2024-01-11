@@ -25,7 +25,7 @@ public class AuthController {
     private final AuthService authService;
     private final CustomerService customerService;
     @PostMapping("/registration")
-    public ResponseEntity<?> registration(@RequestBody CustomerCreateEditDto dto) {
+    public ResponseEntity<?> registration(@RequestBody CustomerCreateEditDto dto) throws Exception{
         System.out.println(dto.toString());
         CustomerReadDto customerReadDto = customerService.create(dto);
         return ResponseEntity

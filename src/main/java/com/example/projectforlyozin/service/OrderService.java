@@ -51,8 +51,14 @@ public class OrderService {
     }
 
     @Transactional
-    public OrderReadDto addProductInOrder(Integer orderId, ProductQuantityCreateEditDto dto) {
+    public OrderReadDto addProductInOrder(Integer orderId, ProductQuantityCreateEditDto dto) throws Exception {
         Optional<Order> order = orderRepository.findById(orderId);
+        List<OrderProduct> orderProductList = order.get().getOrderProducts();
+        for(int i = 0; i < orderProductList.size(); i++){
+            if(orderProductList.get(i).getProduct().getProductId() == dto.getProductId()){
+                throw new Exception("e");
+            }
+        }
         OrderProduct orderProduct = new OrderProduct();
         orderProduct.setOrder(order.get());
         Optional<Product> product = productRepository.findById(dto.getProductId());
