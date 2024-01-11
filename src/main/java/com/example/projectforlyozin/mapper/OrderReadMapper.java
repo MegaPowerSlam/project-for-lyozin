@@ -19,15 +19,15 @@ public class OrderReadMapper implements Mapper<Order, OrderReadDto> {
 
     @Override
     public OrderReadDto map(Order object) {
-        List<ProductQuantity> products = null;
-//        List<ProductQuantity> products = object.getOrderProducts().stream()
-//                .map(orderProduct -> {
-//                    return new ProductQuantity(
-//                      productReadMapper.map(orderProduct.getProduct()),
-//                      orderProduct.getQuantity()
-//                    );
-//                })
-//                .collect(Collectors.toList());
+//        List<ProductQuantity> products = null;
+        List<ProductQuantity> products = object.getOrderProducts().stream()
+                .map(orderProduct -> {
+                    return new ProductQuantity(
+                      productReadMapper.map(orderProduct.getProduct()),
+                      orderProduct.getQuantity()
+                    );
+                })
+                .collect(Collectors.toList());
         DeliveryListReadDto deliveryListReadDto;
         if (object.getDeliveryList() != null){
             deliveryListReadDto = deliveryListReadMapper.map(object.getDeliveryList());

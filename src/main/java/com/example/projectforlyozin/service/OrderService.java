@@ -57,7 +57,7 @@ public class OrderService {
         orderProduct.setOrder(order.get());
         Optional<Product> product = productRepository.findById(dto.getProductId());
         orderProduct.setProduct(product.get());
-        orderProduct.setQuantity(1);
+        orderProduct.setQuantity(dto.getQuantity());
         OrderProduct saved = orderProductRepository.save(orderProduct);
 //        List<OrderProduct> orderProductList = order.get().getOrderProducts();
 //        orderProductList.add(orderProduct);

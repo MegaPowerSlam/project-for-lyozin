@@ -5,6 +5,6 @@ import lombok.Value;
 @Value
 public class ProductQuantity {
 
-    ProductReadDto productReadDto;
+    ProductReadDto product;
     Integer quantity;
 }
