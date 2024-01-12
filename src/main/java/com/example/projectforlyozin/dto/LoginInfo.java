@@ -6,6 +6,7 @@ import lombok.Value;
 @Value
 public class LoginInfo {
     Integer userId;
+    Integer currentOrderId;
     String role;
     String token;
 }

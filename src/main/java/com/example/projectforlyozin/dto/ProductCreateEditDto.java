@@ -14,4 +14,6 @@ public class ProductCreateEditDto {
     BigDecimal price;
 
     String description;
+
+    String imageUrl;
 }

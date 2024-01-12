@@ -14,4 +14,5 @@ public class ProductReadDto {
     BigDecimal price;
 
     String description;
+    String imageUrl;
 }

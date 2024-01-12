@@ -41,9 +41,9 @@ public class OrderController {
                 .body(orderReadDto);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteProductFromOrder(@PathVariable("id") Integer orderId,
-                                                    @RequestBody Integer productId){
+    @DeleteMapping("/{orderId}/product/{productId}")
+    public ResponseEntity<?> deleteProductFromOrder(@PathVariable("orderId") Integer orderId,
+                                                    @PathVariable("productId") Integer productId){
         orderService.deleteProductFromOrder(orderId, productId);
         return ResponseEntity
                 .ok()

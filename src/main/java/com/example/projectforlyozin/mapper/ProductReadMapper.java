@@ -14,6 +14,7 @@ public class ProductReadMapper implements Mapper<Product, ProductReadDto> {
                 object.getProductId(),
                 object.getProductName(),
                 object.getPrice(),
-                object.getDescription());
+                object.getDescription(),
+                object.getImageUrl());
     }
 }

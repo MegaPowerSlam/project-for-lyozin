@@ -37,8 +37,12 @@ public class AuthService {
         Customer customer = (Customer) user;
         String jwtToken = jwtService.generateToken(user);
         LoginInfo loginInfo = new LoginInfo(
-                customer.getCustomerId(),
-                customer.getRole().name(),
+        customer.getCustomerId(),
+        customer.getOrders().stream()
+                .filter(order -> order.getDeliveryList() == null)
+                .findFirst()
+                .get().getOrderId(),
+            customer.getRole().name(),
                 jwtToken
         );
         System.out.println("Entry");
