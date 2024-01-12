@@ -36,14 +36,17 @@ public class AuthService {
         UserDetails user = userDetailsService.loadUserByUsername(dto.getUsername());
         Customer customer = (Customer) user;
         String jwtToken = jwtService.generateToken(user);
+        String address = "г. " + customer.getCity() + ", ул. " + customer.getStreet() + ", д. "
+                + customer.getHouse() + ", кв. " + customer.getApartment();
         LoginInfo loginInfo = new LoginInfo(
         customer.getCustomerId(),
         customer.getOrders().stream()
                 .filter(order -> order.getDeliveryList() == null)
                 .findFirst()
                 .get().getOrderId(),
-            customer.getRole().name(),
-                jwtToken
+        address,
+        customer.getRole().name(),
+        jwtToken
         );
         System.out.println("Entry");
         return loginInfo;

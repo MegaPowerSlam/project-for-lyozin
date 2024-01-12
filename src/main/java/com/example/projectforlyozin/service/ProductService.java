@@ -12,6 +12,7 @@ import com.example.projectforlyozin.repository.ProductRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,8 +24,11 @@ public class ProductService {
     private final ProductReadMapper productReadMapper;
     private final ProductCreateEditMapper productCreateEditMapper;
 
-    public ProductReadDto create(ProductCreateEditDto dto){
-        return productReadMapper.map(productRepository.save(productCreateEditMapper.map(dto)));
+    public ProductReadDto create(ProductCreateEditDto dto)throws Exception{
+        Product product = productCreateEditMapper.map(dto);
+        if (product.getProductName().equals("") || (product.getPrice().doubleValue() <= 0.0) || product.getDescription().
+                equals("") || product.getImageUrl().equals("")) throw new Exception("");
+        return productReadMapper.map(productRepository.save(product));
     }
 
     public ProductReadDto read(Integer id){

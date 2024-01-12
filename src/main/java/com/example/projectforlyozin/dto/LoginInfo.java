@@ -7,6 +7,7 @@ import lombok.Value;
 public class LoginInfo {
     Integer userId;
     Integer currentOrderId;
+    String address;
     String role;
     String token;
 }

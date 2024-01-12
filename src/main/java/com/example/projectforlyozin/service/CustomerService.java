@@ -33,11 +33,12 @@ public class CustomerService {
 
     @Transactional
     public CustomerReadDto create(CustomerCreateEditDto dto) throws Exception{
-        Customer customer = customerRepository.save(customerCreateEditMapper.map(dto));
+        Customer customer = customerCreateEditMapper.map(dto);
         if(customer.getFirstName().equals("") || customer.getLastName().equals("") || customer.
                 getUsername().equals("") || customer.getPassword().equals("") || customer.getPhoneNumber().equals("") || customer.
                 getCity().equals("") || customer.getCity().equals("") || customer.getHouse().equals(0) || customer.
                 getApartment().equals(0)) throw new Exception("");
+        customerRepository.save(customer);
         customer.setPassword(passwordEncoder.encode(dto.getPassword()));
         Order order = new Order();
         order.setCustomer(customer);

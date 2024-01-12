@@ -24,7 +24,7 @@ public class ProductController {
 
     @PreAuthorize("hasAuthority('ADMIN')")
     @PostMapping
-    public ResponseEntity<ProductReadDto> create(@RequestBody ProductCreateEditDto dto){
+    public ResponseEntity<ProductReadDto> create(@RequestBody ProductCreateEditDto dto) throws Exception{
         return new ResponseEntity<>(productService.create(dto), HttpStatus.CREATED);
     }
 
